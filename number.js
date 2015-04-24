@@ -5,18 +5,19 @@
  */
 (function () {
     function add(first, second) {
-        var r1, r2, m;
-        try {
-            r1 = first.toString().split(".")[1].length;
-        } catch (e) {
-            r1 = 0;
+        var l1 = 0;
+        var l2 = 0;
+        try{
+            l1 = first.toString().split(".")[1].length;
+        }catch(e){
+
         }
-        try {
-            r2 = second.toString().split(".")[1].length;
-        } catch (e) {
-            r2 = 0;
+        try{
+            l2 = second.toString().split(".")[1].length;
+        }catch(e){
+
         }
-        m = Math.pow(10, Math.max(r1, r2));
+        var m = Math.pow(10, Math.max(l1, l2));
         return (first * m + second * m) / m;
     }
 
@@ -31,16 +32,19 @@
     };
 
     function mul(first, second) {
-        var m = 0, s1 = first.toString(), s2 = second.toString();
-        try {
-            m += s1.split(".")[1].length;
-        } catch (e) {
+        var l1 = 0;
+        var l2 = 0;
+        try{
+            l1 = first.toString().split(".")[1].length;
+        }catch(e){
+
         }
-        try {
-            m += s2.split(".")[1].length;
-        } catch (e) {
+        try{
+            l2 = second.toString().split(".")[1].length;
+        }catch(e){
+
         }
-        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+        return ((first*Math.pow(10,l1)) * (second*Math.pow(10,l2))) / Math.pow(10, l1+l2);
     }
 
 //乘法
@@ -49,19 +53,20 @@
     };
 
     function div(first, second) {
-        var t1 = 0, t2 = 0, r1, r2;
-        try {
-            t1 = first.toString().split(".")[1].length;
-        } catch (e) {
-        }
-        try {
-            t2 = second.toString().split(".")[1].length;
-        } catch (e) {
-        }
+        var l1 = 0;
+        var l2 = 0;
+        try{
+            l1 = first.toString().split(".")[1].length;
+        }catch(e){
 
-        r1 = Number(first.toString().replace(".", ""));
-        r2 = Number(second.toString().replace(".", ""));
-        return (r1 / r2) * Math.pow(10, t2 - t1);
+        }
+        try{
+            l2 = second.toString().split(".")[1].length;
+        }catch(e){
+
+        }
+        var m = Math.pow(10, Math.max(l1, l2));
+        return (first*m) / (second*m);
     }
 
 //除法
